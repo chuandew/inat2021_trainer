@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "inat2021-dingofs-training"
+version = "0.1.0"
+description = "Observable ResNet training for DingoFS ImageFolder workloads"
+requires-python = ">=3.12,<3.13"
+dependencies = [
+  "numpy==2.1.3",
+  "pillow==11.3.0",
+  "torch==2.9.1",
+  "torchvision==0.24.1",
+]
+
+[dependency-groups]
+dev = [
+  "pytest==9.0.3",
+  "ruff==0.16.5",
+]
+
+[project.scripts]
+inat2021-train = "inat2021_trainer.cli:main"
+inat2021-manifest = "inat2021_trainer.manifest:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
